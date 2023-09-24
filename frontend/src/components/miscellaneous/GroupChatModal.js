@@ -12,6 +12,7 @@ import {
     Input,
     useToast,
     Box,
+    Spinner,
 } from "@chakra-ui/react";
 
 import axios from "axios";
@@ -97,8 +98,7 @@ const GroupChatModal = ({ children }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.post(
-                `/api/chat/group`,
+            const { data } = await axios.post(`/api/chat/group`,
                 {
                     name: groupChatName,
                     users: JSON.stringify(selectedUsers.map((u) => u._id)),
@@ -168,18 +168,17 @@ const GroupChatModal = ({ children }) => {
                         </Box>
                         {loading ? (
                             // <ChatLoading />
-                            <div>Loading...</div>
+                            <Spinner size="lg" />
                         ) : (
-                            searchResult
-                                ?.slice(0, 4)
-                                .map((user) => (
-                                    <UserListItem
-                                        key={user._id}
-                                        user={user}
-                                        handleFunction={() => handleGroup(user)}
-                                    />
-                                ))
+                            searchResult?.slice(0, 4).map((user) => (
+                                <UserListItem
+                                    key={user._id}
+                                    user={user}
+                                    handleFunction={() => handleGroup(user)}
+                                />
+                            ))
                         )}
+
                     </ModalBody>
                     <ModalFooter>
                         <Button onClick={handleSubmit} colorScheme="blue">

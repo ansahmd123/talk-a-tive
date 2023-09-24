@@ -129,7 +129,7 @@ const Signup = () => {
                     onChange={(e) => setName(e.target.value)}
                 />
             </FormControl>
-            <FormControl id="email" isRequired>
+            <FormControl id="semail" isRequired>
                 <FormLabel>Email Address</FormLabel>
                 <Input
                     type="email"
@@ -152,7 +152,7 @@ const Signup = () => {
                     </InputRightElement>
                 </InputGroup>
             </FormControl>
-            <FormControl id="password" isRequired>
+            <FormControl id="cpassword" isRequired>
                 <FormLabel>Confirm Password</FormLabel>
                 <InputGroup size="md">
                     <Input

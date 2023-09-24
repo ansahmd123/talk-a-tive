@@ -65,6 +65,14 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         }
     };
 
+    const handleAdminSearch = (user, admin) => {
+        if (user._id === admin._id) {
+            return false;
+        }
+        else
+            return true;
+    }
+
     const handleRename = async () => {
         if (!groupChatName) return;
 
@@ -75,8 +83,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.put(
-                `/api/chat/rename`,
+            const { data } = await axios.put(`/api/chat/rename`,
                 {
                     chatId: selectedChat._id,
                     chatName: groupChatName,
@@ -87,6 +94,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
             console.log(data._id);
             // setSelectedChat("");
             setSelectedChat(data);
+            //fetching chats again
             setFetchAgain(!fetchAgain);
             setRenameLoading(false);
         } catch (error) {
@@ -133,8 +141,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.put(
-                `/api/chat/groupadd`,
+            const { data } = await axios.put(`/api/chat/groupadd`,
                 {
                     chatId: selectedChat._id,
                     userId: user1._id,
@@ -178,8 +185,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                     Authorization: `Bearer ${user.token}`,
                 },
             };
-            const { data } = await axios.put(
-                `/api/chat/groupremove`,
+            const { data } = await axios.put(`/api/chat/groupremove`,
                 {
                     chatId: selectedChat._id,
                     userId: user1._id,
@@ -253,6 +259,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                         <FormControl>
                             <Input
                                 placeholder="Add User to group"
+                                disabled={handleAdminSearch(user, selectedChat.groupAdmin)}
                                 mb={1}
                                 onChange={(e) => handleSearch(e.target.value)}
                             />
