@@ -1,10 +1,7 @@
-// import { AddIcon } from "@chakra-ui/icons";
-// import { Box, Stack, Text } from "@chakra-ui/layout";
-// import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { getSender } from "../config/ChatLogics";
-import ChatLoading from "./ChatLoading";
+// import ChatLoading from "./ChatLoading";
 import GroupChatModal from "./miscellaneous/GroupChatModal";
 import { Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
@@ -118,8 +115,10 @@ const MyChats = ({ fetchAgain }) => {
                         ))}
                     </Stack>
                 ) : (
-                    // <ChatLoading />
-                    <><span>Search User And Start Chat...</span></>
+                    // <><ChatLoading /></>
+                    <Text fontSize="3xl" pb={3} fontFamily="Work sans">
+                        Click on a user to start chatting
+                    </Text>
                 )}
             </Box>
         </Box>
