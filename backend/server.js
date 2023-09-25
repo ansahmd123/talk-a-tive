@@ -3,13 +3,14 @@ const dotenv = require('dotenv');
 // const { chats } = require('./data/data');
 const connectDB = require('./config/db');
 const { errorHandler, notFound } = require('./middlewares/errorMiddleWare');
-
+const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const chatRoutes = require('./routes/chatRoutes');
 const messageRoutes = require('./routes/messageRoutes');
-
+const path = require('path');
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 dotenv.config();
 connectDB();
@@ -33,6 +34,30 @@ app.get('/', (req, res) => {
 app.use('/api/user', userRoutes);
 app.use('/api/chat', chatRoutes);
 app.use('/api/message', messageRoutes);
+
+
+// --------------------------deployment------------------------------
+
+const __dirname1 = path.resolve();
+
+if (process.env.NODE_ENV === "production") {
+    console.log("prod mode")
+    // console.log(__dirname1);
+
+    app.use(express.static(path.join(__dirname1, "/frontend/build")));
+
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname1, "frontend", "build", "index.html"))
+        // res.sendFile(path.resolve(__dirname1, "index.html"));
+    });
+} else {
+    console.log("dev mode")
+    app.get("/", (req, res) => {
+        res.send("API is running..");
+    });
+}
+
+// --------------------------deployment------------------------------
 
 //if goes on other than specified port
 app.use(notFound);

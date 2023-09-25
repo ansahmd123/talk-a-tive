@@ -118,7 +118,8 @@ const MyChats = ({ fetchAgain }) => {
                         ))}
                     </Stack>
                 ) : (
-                    <ChatLoading />
+                    // <ChatLoading />
+                    <><span>Search User And Start Chat...</span></>
                 )}
             </Box>
         </Box>
