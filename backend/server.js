@@ -2,7 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 // const { chats } = require('./data/data');
 const connectDB = require('./config/db');
-const { errorHandler, notFound } = require('./middlewares/errorMiddleWare');
+// const { errorHandler, notFound } = require('./middlewares/errorMiddleWare');
 const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const chatRoutes = require('./routes/chatRoutes');
@@ -60,8 +60,8 @@ if (process.env.NODE_ENV === "production") {
 // --------------------------deployment------------------------------
 
 //if goes on other than specified port
-app.use(notFound);
-app.use(errorHandler);
+// app.use(notFound);
+// app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
