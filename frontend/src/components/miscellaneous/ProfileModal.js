@@ -24,9 +24,9 @@ const ProfileModal = ({ user, children }) => {
             ) : (
                 <IconButton display={{ base: "flex" }} icon={<ViewIcon />} onClick={onOpen} />
             )}
-            <Modal size="lg" onClose={onClose} isOpen={isOpen} isCentered>
+            <Modal size={'md'} onClose={onClose} isOpen={isOpen} isCentered>
                 <ModalOverlay />
-                <ModalContent h="410px">
+                <ModalContent h="370px">
                     <ModalHeader
                         fontSize="40px"
                         fontFamily="Work sans"
