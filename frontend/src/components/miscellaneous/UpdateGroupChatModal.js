@@ -104,7 +104,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 status: "error",
                 duration: 5000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setRenameLoading(false);
         }
@@ -118,7 +118,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 status: "error",
                 duration: 5000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             return;
         }
@@ -129,7 +129,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 status: "error",
                 duration: 5000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             return;
         }
@@ -159,7 +159,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 status: "error",
                 duration: 5000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setLoading(false);
         }
@@ -204,7 +204,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
                 status: "error",
                 duration: 5000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setLoading(false);
         }

@@ -35,7 +35,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     if (userExists) {
         res.status(400);
-        throw new Error("User already exists");
+        throw new Error("User with this email already exists...");
     }
 
     const user = await User.create({
@@ -50,13 +50,12 @@ const registerUser = asyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
-            isAdmin: user.isAdmin,
             pic: user.pic,
             token: generateToken(user._id),
         });
     } else {
         res.status(400);
-        throw new Error("User not found");
+        throw new Error("Failed to create the user.");
     }
 });
 
@@ -67,6 +66,10 @@ const authUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
+    if (!user) {
+        res.status(401);
+        throw new Error("Email is not registered with us. Sign Up to get register!");
+    }
 
     if (user && (await user.matchPassword(password))) {
         res.json({

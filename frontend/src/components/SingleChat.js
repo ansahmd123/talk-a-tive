@@ -70,9 +70,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 title: "Error Occured!",
                 description: "Failed to Load the Messages",
                 status: "error",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
         }
     };
@@ -103,9 +103,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                     title: "Error Occured!",
                     description: "Failed to send the Message",
                     status: "error",
-                    duration: 5000,
+                    duration: 3000,
                     isClosable: true,
-                    position: "bottom",
+                    position: "top",
                 });
             }
         }
@@ -138,7 +138,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     });
 
     const typingHandler = (e) => {
-        setNewMessage(e.target.value)
+        setNewMessage(e.target.value);
         // setNewMessage(e.target.value);
 
         if (!socketConnected) return;

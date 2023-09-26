@@ -7,12 +7,18 @@ import { Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 import { AddIcon } from "@chakra-ui/icons";
 
-const MyChats = ({ fetchAgain }) => {
+const MyChats = ({ fetchAgain, setFetchAgain }) => {
     const [loggedUser, setLoggedUser] = useState();
 
-    const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
+    const { selectedChat, setSelectedChat, user, setUser, chats, setChats } = ChatState();
 
     const toast = useToast();
+
+    useEffect(() => {
+        setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+        fetchChats();
+        // eslint-disable-next-line
+    }, [fetchAgain]);
 
     const fetchChats = async () => {
         // console.log(user._id);
@@ -37,11 +43,7 @@ const MyChats = ({ fetchAgain }) => {
         }
     };
 
-    useEffect(() => {
-        setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
-        fetchChats();
-        // eslint-disable-next-line
-    }, [fetchAgain]);
+
 
     return (
         <Box

@@ -22,9 +22,9 @@ const Login = () => {
             toast({
                 title: "Please Fill all the Feilds",
                 status: "warning",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setLoading(false);
             return;
@@ -38,16 +38,16 @@ const Login = () => {
             };
 
             const { data } = await axios.post("/api/user/login", { email, password }, config);
-
+            // console.log(data);
             toast({
                 title: "Login Successful",
                 status: "success",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
-            setUser(data);
             localStorage.setItem("userInfo", JSON.stringify(data));
+            setUser(data);
             setLoading(false);
             history.push("/chats");
         } catch (error) {
@@ -55,9 +55,9 @@ const Login = () => {
                 title: "Error Occured!",
                 description: error.response.data.message,
                 status: "error",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setLoading(false);
         }

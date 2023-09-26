@@ -28,9 +28,9 @@ const Signup = () => {
             toast({
                 title: "Please Fill all the Fields",
                 status: "warning",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setPicLoading(false);
             return;
@@ -39,9 +39,9 @@ const Signup = () => {
             toast({
                 title: "Passwords Do Not Match",
                 status: "warning",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             return;
         }
@@ -57,9 +57,9 @@ const Signup = () => {
             toast({
                 title: "Registration Successful",
                 status: "success",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
@@ -70,9 +70,9 @@ const Signup = () => {
                 title: "Error Occured!",
                 description: error.response.data.message,
                 status: "error",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setPicLoading(false);
         }
@@ -84,9 +84,9 @@ const Signup = () => {
             toast({
                 title: "Please Select an Image!",
                 status: "warning",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             return;
         }
@@ -103,20 +103,20 @@ const Signup = () => {
                 .then((res) => res.json())
                 .then((data) => {
                     setPic(data.url.toString());
-                    console.log(data.url.toString());
+                    // console.log(data.url.toString());
                     setPicLoading(false);
                 })
                 .catch((err) => {
-                    console.log(err);
+                    // console.log(err);
                     setPicLoading(false);
                 });
         } else {
             toast({
                 title: "Please Select an Image!",
                 status: "warning",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
-                position: "bottom",
+                position: "top",
             });
             setPicLoading(false);
             return;

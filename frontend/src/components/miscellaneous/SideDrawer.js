@@ -19,14 +19,7 @@ const SideDrawer = () => {
     const [loading, setLoading] = useState(false);
     const [loadingChat, setLoadingChat] = useState(false);
 
-    const {
-        setSelectedChat,
-        user,
-        notification,
-        setNotification,
-        chats,
-        setChats,
-    } = ChatState();
+    const { setSelectedChat, user, setUser, notification, setNotification, chats, setChats } = ChatState();
 
     const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,6 +27,7 @@ const SideDrawer = () => {
 
     const logoutHandler = () => {
         localStorage.removeItem("userInfo");
+        setUser([]);
         history.push("/");
     };
 
@@ -87,7 +81,8 @@ const SideDrawer = () => {
             };
             const { data } = await axios.post(`/api/chat`, { userId }, config);
 
-            if (!chats.find((c) => c._id === data._id)) setChats([data, ...chats]);
+            if (!chats.find((c) => c._id === data._id))
+                setChats([data, ...chats]);
             setSelectedChat(data);
             setLoadingChat(false);
             onClose();
@@ -96,7 +91,7 @@ const SideDrawer = () => {
                 title: "Error fetching the chat",
                 description: error.message,
                 status: "error",
-                duration: 5000,
+                duration: 3000,
                 isClosable: true,
                 position: "bottom-left",
             });
