@@ -20,7 +20,7 @@ const Signup = () => {
     const [password, setPassword] = useState();
     const [pic, setPic] = useState();
     const [picLoading, setPicLoading] = useState(false);
-    const { setUser } = ChatState();
+    const { setUser, setSelectedChat } = ChatState();
 
     const submitHandler = async () => {
         setPicLoading(true);
@@ -64,6 +64,7 @@ const Signup = () => {
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
             setUser(data);
+            setSelectedChat(undefined); //added by me
             history.push("/chats");
         } catch (error) {
             toast({

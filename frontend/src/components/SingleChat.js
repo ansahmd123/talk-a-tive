@@ -112,7 +112,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     };
 
 
-
     useEffect(() => {
         fetchMessages();
 
@@ -139,7 +138,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
     const typingHandler = (e) => {
         setNewMessage(e.target.value);
-        // setNewMessage(e.target.value);
 
         if (!socketConnected) return;
 

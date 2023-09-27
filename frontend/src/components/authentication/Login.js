@@ -14,7 +14,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
 
     const history = useHistory();
-    const { setUser } = ChatState();
+    const { setUser, setSelectedChat } = ChatState();
 
     const submitHandler = async () => {
         setLoading(true);
@@ -48,6 +48,7 @@ const Login = () => {
             });
             localStorage.setItem("userInfo", JSON.stringify(data));
             setUser(data);
+            setSelectedChat(undefined); //added by me
             setLoading(false);
             history.push("/chats");
         } catch (error) {
