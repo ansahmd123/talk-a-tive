@@ -3,8 +3,8 @@ import { getSender, getSenderFull } from "../config/ChatLogics";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ProfileModal from "./miscellaneous/ProfileModal";
-import Lottie from "react-lottie"
-import animationData from "../animations/typing.json";
+// import Lottie from "react-lottie"
+// import animationData from "../animations/typing.json";
 import io from "socket.io-client";
 import UpdateGroupChatModal from "./miscellaneous/UpdateGroupChatModal";
 import { ChatState } from "../Context/ChatProvider";
@@ -25,14 +25,14 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const [istyping, setIsTyping] = useState(false);
     const toast = useToast();
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-            preserveAspectRatio: "xMidYMid slice",
-        },
-    };
+    // const defaultOptions = {
+    //     loop: true,
+    //     autoplay: true,
+    //     animationData: animationData,
+    //     rendererSettings: {
+    //         preserveAspectRatio: "xMidYMid slice",
+    //     },
+    // };
 
     const { selectedChat, setSelectedChat, user, notification, setNotification } = ChatState();
 
@@ -172,15 +172,17 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         alignItems="center"
                     >
                         <IconButton
-                            // display={{ base: "flex", md: "none" }}
-                            display={'flex'}
+                            display={{ base: "flex", md: "none" }}
+                            // display={'flex'}
                             icon={<ArrowBackIcon />}
                             onClick={() => setSelectedChat("")}
                         />
                         {messages &&
                             (!selectedChat.isGroupChat ? (
                                 <>
-                                    {getSender(user, selectedChat.users)}
+                                    {getSender(user, selectedChat.users)}<br />
+                                    {/* <span>typing...</span> */}
+
                                     <ProfileModal
                                         user={getSenderFull(user, selectedChat.users)}
                                     />
@@ -229,13 +231,25 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         >
                             {istyping ? (
                                 <div>
-                                    <Lottie
+                                    {/* <Lottie
                                         options={defaultOptions}
                                         // height={50}
                                         width={70}
                                         style={{ marginBottom: 15, marginLeft: 0 }}
-                                    />
+                                    /> */}
                                     {/* <span style={{ marginLeft: '10px' }}>typing...</span> */}
+                                    <span
+                                        style={{
+                                            // backgroundColor: "white",
+                                            marginLeft: '3px',
+                                            marginBottom: '3px',
+                                            // borderRadius: "20px",
+                                            padding: "5px 10px",
+                                            maxWidth: "75%",
+                                        }}
+                                    >
+                                        typing...
+                                    </span>
                                 </div>
                             ) : (
                                 <></>

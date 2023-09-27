@@ -7,10 +7,10 @@ import { Box, Button, Stack, Text, useToast } from "@chakra-ui/react";
 import { ChatState } from "../Context/ChatProvider";
 import { AddIcon } from "@chakra-ui/icons";
 
-const MyChats = ({ fetchAgain, setFetchAgain }) => {
+const MyChats = ({ fetchAgain }) => {
     const [loggedUser, setLoggedUser] = useState();
 
-    const { selectedChat, setSelectedChat, user, setUser, chats, setChats } = ChatState();
+    const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
     const toast = useToast();
 
@@ -66,7 +66,7 @@ const MyChats = ({ fetchAgain, setFetchAgain }) => {
                 justifyContent="space-between"
                 alignItems="center"
             >
-                My Chats
+                <Text fontSize={{ base: "24px", md: "30px" }}>My Chats</Text>
                 <GroupChatModal>
                     <Button
                         display="flex"
