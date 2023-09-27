@@ -130,11 +130,11 @@ const GroupChatModal = ({ children }) => {
         <>
             <span onClick={onOpen}>{children}</span>
 
-            <Modal onClose={onClose} isOpen={isOpen} isCentered>
+            <Modal size={{ base: 'xs', md: 'md' }} onClose={onClose} isOpen={isOpen} isCentered>
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader
-                        fontSize="35px"
+                        fontSize={{ md: "35px", base: "25px" }}
                         fontFamily="Work sans"
                         display="flex"
                         justifyContent="center"
