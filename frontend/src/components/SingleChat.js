@@ -12,7 +12,7 @@ import { Box, FormControl, IconButton, Input, Spinner, Text, useToast } from "@c
 import { ArrowBackIcon } from "@chakra-ui/icons";
 import ScrollableChat from "./ScrollableChat";
 
-// const ENDPOINT = "http://localhost:5000"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
+// const ENDPOINT = "http://localhost:5000";
 const ENDPOINT = "https://ansahmd-talk-a-tive.onrender.com"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
 var socket, selectedChatCompare;
 
@@ -268,7 +268,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                 // to get socket.io on same page
                 <Box display="flex" alignItems="center" justifyContent="center" h="100%">
                     <Text fontSize="3xl" pb={3} fontFamily="Work sans">
-                        Click on a user to start chatting
+                        Click on a user to start chatting...
                     </Text>
                 </Box>
             )}
