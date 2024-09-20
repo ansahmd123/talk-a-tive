@@ -50,7 +50,7 @@ const Login = () => {
             setUser(data);
             setSelectedChat(undefined); //added by me
             setLoading(false);
-            history.push("/chats");
+            navigate("/chats");
         } catch (error) {
             toast({
                 title: "Error Occured!",

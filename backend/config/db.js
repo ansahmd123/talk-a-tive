@@ -2,11 +2,7 @@
 
 // const connectDB = async () => {
 //     try {
-<<<<<<< HEAD
-//         const conn = await mongoose.connect(mongoURI,
-=======
 //         const conn = await mongoose.connect(process.env.MONGO_URI,
->>>>>>> FEATURE-DEPLOYMENT
 //             {
 //                 useNewUrlParser: true,
 //                 useUnifiedTopology: true,

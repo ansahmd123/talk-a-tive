@@ -51,11 +51,7 @@ const io = require("socket.io")(server, {
     pingTimeout: 60000,
     cors: {
         // origin: "https://ansahmd-talk-a-tive.onrender.com/",
-<<<<<<< HEAD
-        origin: "http://localhost:3001",
-=======
         origin: "http://localhost:3000",
->>>>>>> FEATURE-DEPLOYMENT
 
         // credentials: true,
     },
