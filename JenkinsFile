@@ -13,16 +13,6 @@ pipeline {
             }
         }
 
-        // stage('Setup') {
-        //     steps {
-        //         script {
-        //             // Install Node.js
-        //             bat 'curl -sL https://deb.nodesource.com/setup_%NODE_VERSION% | bash -'
-        //             bat 'choco install nodejs-lts'
-        //         }
-        //     }
-        // }
-
         stage('Install Backend Dependencies') {
             steps {
                 script {
