@@ -5,7 +5,7 @@ import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router";
 import { ChatState } from "../../Context/ChatProvider";
 
 const Signup = () => {
@@ -65,7 +65,7 @@ const Signup = () => {
             setPicLoading(false);
             setUser(data);
             setSelectedChat(undefined); //added by me
-            navigate.push("/chats");
+            history.push("/chats");
         } catch (error) {
             toast({
                 title: "Error Occured!",
