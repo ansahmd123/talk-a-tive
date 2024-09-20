@@ -28,6 +28,8 @@ pipeline {
                     // Navigate to the frontend directory and install frontend dependencies
                     // bat 'npm install --prefix frontend'
                     bat 'npm install --legacy-peer-deps --prefix frontend'
+                    // Update browserslist DB
+                    bat 'npx update-browserslist-db@latest --prefix frontend'
 
                 }
             }
