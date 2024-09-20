@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -24,13 +24,13 @@ const SideDrawer = () => {
 
     const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const logoutHandler = () => {
         localStorage.removeItem("userInfo");
         setUser([]);
         setSelectedChat(undefined);
-        history.push("/");
+        navigate("/");
     };
 
     const handleSearch = async () => {

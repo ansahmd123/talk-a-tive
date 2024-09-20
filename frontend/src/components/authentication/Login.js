@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ChatState } from "../../Context/ChatProvider";
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, useToast } from "@chakra-ui/react";
 
@@ -13,7 +13,7 @@ const Login = () => {
     const [password, setPassword] = useState();
     const [loading, setLoading] = useState(false);
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const { setUser, setSelectedChat } = ChatState();
 
     const submitHandler = async () => {
@@ -50,7 +50,7 @@ const Login = () => {
             setUser(data);
             setSelectedChat(undefined); //added by me
             setLoading(false);
-            history.push("/chats");
+            navigate("/chats");
         } catch (error) {
             toast({
                 title: "Error Occured!",
