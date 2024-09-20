@@ -26,8 +26,8 @@ pipeline {
             steps {
                 script {
                     // Navigate to the frontend directory and install frontend dependencies
-                    // bat 'npm install --prefix frontend'
-                    bat 'npm install --legacy-peer-deps --prefix frontend'
+                    bat 'npm install --prefix frontend'
+                    // bat 'npm install --legacy-peer-deps --prefix frontend'
                 }
             }
         }
