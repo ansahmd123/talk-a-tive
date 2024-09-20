@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        BROWSERSLIST_IGNORE_OLD_DATA = 'true'
+    }
+
     options {
         skipDefaultCheckout(true)
         timestamps()
@@ -36,7 +40,7 @@ pipeline {
             steps {
                 script {
                     // Build the frontend
-                    bat 'npm run build --prefix frontend'
+                    bat 'npm run build'
                     // bat 'npm install && npm install --prefix frontend && npm run build --prefix frontend'
                 }
             }
