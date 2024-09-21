@@ -31,7 +31,6 @@ pipeline {
                 script {
                     // Navigate to the frontend directory and install frontend dependencies
                     bat 'npm install --prefix frontend'
-                    // bat 'npm install --legacy-peer-deps --prefix frontend'
                 }
             }
         }
@@ -68,7 +67,6 @@ pipeline {
                 script {
                     // Add your deployment steps here
                     echo 'Deploying application...'
-                    // bat 'rmdir /s /q D:\\mern\\mern-chat-app\\jenkins-build'
                     bat 'xcopy /s /i /y frontend\\build\\* D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
                 }
             }
@@ -76,7 +74,7 @@ pipeline {
 
         stage('Archive Artifacts') {
             steps {
-                archiveArtifacts artifacts: 'frontend\\jenkins-build\\**', fingerprint: true
+                archiveArtifacts artifacts: 'frontend\\build\\**', fingerprint: true
             }
         }
 
