@@ -39,6 +39,7 @@ pipeline {
             steps {
                 script {
                     // Build the frontend
+                    bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\build'
                     bat 'npm run build --prefix frontend'
                 }
             }
@@ -69,7 +70,6 @@ pipeline {
                     echo 'Deploying application...'
                     // first delete the existing artifacts
                     bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
-                    bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\build'
                     bat 'xcopy /s /i /y frontend\\build\\* D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
                 }
             }
