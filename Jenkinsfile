@@ -83,8 +83,7 @@ pipeline {
                         if "%%a" neq "0" (
                             echo Killing process with PID %%a...
                             taskkill /F /PID %%a
-                        ) else (
-                            echo Skipping invalid PID %%a...
+                            exit /b 0
                         )
                     )
                     '''
