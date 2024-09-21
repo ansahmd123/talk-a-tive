@@ -76,7 +76,7 @@ pipeline {
 
         stage('Archive Artifacts') {
             steps {
-                archiveArtifacts artifacts: '*', fingerprint: true
+                archiveArtifacts artifacts: 'frontend\\jenkins-build\\**', fingerprint: true
             }
         }
 
