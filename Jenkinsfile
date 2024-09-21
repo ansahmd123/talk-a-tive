@@ -64,16 +64,16 @@ pipeline {
         //     }
         // }
 
-        stage('Deploy') {
-            steps {
-                script {
-                    // Add your deployment steps here
-                    echo 'Deploying application...'
-                    bat 'rmdir /s /q D:\\mern\\mern-chat-app\\jenkins-build'
-                    bat 'xcopy /s /i /y build\\* D:\\mern\\mern-chat-app\\jenkins-build'
-                }
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         script {
+        //             // Add your deployment steps here
+        //             echo 'Deploying application...'
+        //             bat 'rmdir /s /q D:\\mern\\mern-chat-app\\jenkins-build'
+        //             bat 'xcopy /s /i /y build\\* D:\\mern\\mern-chat-app\\jenkins-build'
+        //         }
+        //     }
+        // }
 
         stage('Archive Artifacts') {
             steps {
