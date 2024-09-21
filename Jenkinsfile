@@ -81,7 +81,10 @@ pipeline {
                     echo Stopping the server...
                     for /f "tokens=5" %%a in ('netstat -ano ^| findstr :5000') do (
                         if "%%a" neq "0" (
+                            echo Killing process with PID %%a...
                             taskkill /F /PID %%a
+                        ) else (
+                            echo Skipping invalid PID %%a...
                         )
                     )
                     '''
