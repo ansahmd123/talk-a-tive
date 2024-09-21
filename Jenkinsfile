@@ -66,6 +66,7 @@ pipeline {
         stage('Run Frontend Tests') {
             steps {
                 script {
+                    bat 'npm run playwright install --prefix frontend'
                     // Run Playwright tests
                     bat 'npm run test:playwright --prefix frontend'
                 }
