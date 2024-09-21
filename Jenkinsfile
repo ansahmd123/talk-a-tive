@@ -69,6 +69,7 @@ pipeline {
                     echo 'Deploying application...'
                     // first delete the existing artifacts
                     bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
+                    bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\build'
                     bat 'xcopy /s /i /y frontend\\build\\* D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
                 }
             }
@@ -76,8 +77,6 @@ pipeline {
 
         stage('Archive Artifacts') {
             steps {
-                // first delete the existing artifacts
-                deleteDir 'frontend\\build\\'
                 archiveArtifacts artifacts: 'frontend\\build\\**', fingerprint: true, onlyIfSuccessful: true
             }
         }
