@@ -38,10 +38,6 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 script {
-                    // check if the frontend/build directory already exists, if so delete it
-                    bat 'if exist frontend\\build rmdir /s /q frontend\\build'
-
-                    // bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\build'
                     bat 'npm run build --prefix frontend'
                 }
             }
