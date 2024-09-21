@@ -66,7 +66,7 @@ pipeline {
         stage('Run Frontend Tests') {
             steps {
                 script {
-                    bat 'npm run playwright install --prefix frontend'
+                    bat 'npm run playwright:install --prefix frontend'
                     // Run Playwright tests
                     bat 'npm run test:playwright --prefix frontend'
                 }
@@ -79,7 +79,11 @@ pipeline {
                     // Stop the server by killing the process
                     bat '''
                     echo Stopping the server...
-                    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :5000') do taskkill /F /PID %%a
+                    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :5000') do (
+                        if "%%a" neq "0" (
+                            taskkill /F /PID %%a
+                        )
+                    )
                     '''
                 }
             }
