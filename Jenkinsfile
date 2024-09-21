@@ -43,34 +43,43 @@ pipeline {
             }
         }
 
-        // stage('Run Backend Tests') {
-        //     steps {
-        //         script {
-        //             // Run backend tests (if any)
-        //             bat 'npm test'
-        //         }
-        //     }
-        // }
-
-        // stage('Run Frontend Tests') {
-        //     steps {
-        //         script {
-        //             // Run frontend tests (if any)
-        //             bat 'npm test --prefix frontend'
-        //         }
-        //     }
-        // }
-
         stage('Deploy') {
             steps {
                 script {
                     // Add your deployment steps here
                     echo 'Deploying application...'
-                    // first delete the existing artifacts
-                    // bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
-                    // bat 'xcopy /s /i /y frontend\\build\\* D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
-                    bat 'npm start'
+                    bat 'start /B cmd /c "npm start"'
+                    // Wait for the server to be up and running
+                    bat '''
+                    echo Waiting for the server to start...
+                    for /L %%i in (1,1,30) do (
+                        powershell -Command "try { (Invoke-WebRequest -Uri http://localhost:5000 -UseBasicParsing).StatusCode } catch { $_.Exception.Response.StatusCode }" | findstr "200" && exit /b 0
+                        timeout /t 2 >nul
+                    )
+                    echo Server did not start within the expected time.
+                    exit /b 1
+                    '''
+                }
+            }
+        }
+
+        stage('Run Frontend Tests') {
+            steps {
+                script {
+                    // Run Playwright tests
                     bat 'npm run test:playwright --prefix frontend'
+                }
+            }
+        }
+
+        stage('Stop Server') {
+            steps {
+                script {
+                    // Stop the server by killing the process
+                    bat '''
+                    echo Stopping the server...
+                    for /f "tokens=5" %%a in ('netstat -ano ^| findstr :5000') do taskkill /F /PID %%a
+                    '''
                 }
             }
         }
