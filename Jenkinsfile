@@ -70,6 +70,7 @@ pipeline {
                     // bat 'rmdir /s /q D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
                     // bat 'xcopy /s /i /y frontend\\build\\* D:\\mern\\mern-chat-app\\frontend\\jenkins-build'
                     bat 'npm start'
+                    bat 'npm run test:playwright --prefix frontend'
                 }
             }
         }
