@@ -43,14 +43,6 @@ const MyChats = ({ fetchAgain }) => {
         }
     };
 
-
-    // // Function to filter chats based on search input
-    // const filteredChats = chats.filter((chat) =>
-    //     chat.isGroupChat
-    //         ? chat.chatName.toLowerCase().includes(searchUser.toLowerCase())
-    //         : getSender(loggedUser, chat.users).toLowerCase().includes(searchUser.toLowerCase())
-    // );
-
     return (
         <>
             <Box
@@ -94,6 +86,14 @@ const MyChats = ({ fetchAgain }) => {
                     borderRadius="lg"
                     overflowY="hidden"
                 >
+                    {chats.length === 0 && (
+                        <Box display="flex" alignItems="center" justifyContent="center" h="90%">
+                            <Text fontSize="3xl" pb={3} fontFamily="Work sans">
+                                No chats found...
+                            </Text>
+                        </Box>
+                    )}
+
                     {chats ? (
                         <>
                             <Stack overflowY="scroll">
